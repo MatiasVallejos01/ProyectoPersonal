@@ -1,4 +1,3 @@
-<h1>{{$modo}} Empleado</h1>
 
 @if(count($errors)>0)
 

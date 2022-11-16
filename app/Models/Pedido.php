@@ -10,9 +10,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $categoria_id
  * @property $nombre
+ * @property $estado
+ * @property $cantidad
  * @property $created_at
  * @property $updated_at
- * @property $cantidad
+ *
  *
  * @property Categoria $categoria
  * @package App
@@ -24,6 +26,7 @@ class Pedido extends Model
     static $rules = [
 		'categoria_id' => 'required',
 		'nombre' => 'required',
+        'estado' => 'required',
         'cantidad' => 'required'
     ];
 
@@ -34,7 +37,7 @@ class Pedido extends Model
      *
      * @var array
      */
-    protected $fillable = ['categoria_id','nombre','cantidad'];
+    protected $fillable = ['categoria_id','nombre','estado','cantidad'];
 
 
     /**
@@ -42,7 +45,7 @@ class Pedido extends Model
      */
     public function categoria()
     {
-        return $this->hasOne('App\Models\Categoria', 'id', 'categoria_id', 'cantidad');
+        return $this->hasOne('App\Models\Categoria', 'id', 'categoria_id', 'estado', 'cantidad');
     }
 
 

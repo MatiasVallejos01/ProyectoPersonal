@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Update Pedido
+    Editor de Pedido
 @endsection
 
 @section('content')
@@ -13,14 +13,14 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Pedido</span>
+                        <span class="card-title"><h3>Editor de Pedido</h3></span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('pedidos.update', $pedido->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('pedido.form')
+                            @include('pedido.form',['modo'=>'Editar'])
 
                         </form>
                     </div>
