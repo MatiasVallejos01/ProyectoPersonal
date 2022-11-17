@@ -13,14 +13,20 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title"><h3>Editor de Pedido</h3></span>
+                        <span class="card-title">
+                            <h3>Editor de Pedido</h3>
+                        </span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('pedidos.update', $pedido->id) }}"  role="form" enctype="multipart/form-data">
+
+                        <form method="POST" action="{{ route('pedidos.update', $pedido->id) }}" role="form"
+                            enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('pedido.form',['modo'=>'Editar'])
+                            <!-- Se incluye el archivo form.blade.php el cual contiene el formulario,
+                                    enviandole como parametro [modo] (para diferenciar la accion a realizar) -->
+                            @include('pedido.form', ['modo' => 'Editar'])
 
                         </form>
                     </div>

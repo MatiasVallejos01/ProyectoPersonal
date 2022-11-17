@@ -16,16 +16,22 @@
                                 {{ __('Pedido') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('pedidos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Pedido') }}
+                            <div class="float-right">
+                                <!-- Atributo [href] tiene como valor la ruta del controlador PedidoController referenciando el metodo create -->
+                                <a href="{{ route('pedidos.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
+                                    {{ __('Crear Pedido') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success alert-dismissible" role="alert">
                             <p>{{ $message }}</p>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     @endif
 
@@ -36,8 +42,8 @@
                                     <tr>
                                         <th>#</th>
 
-										<th>Categoria</th>
-										<th>Nombre</th>
+                                        <th>Categoria</th>
+                                        <th>Nombre</th>
                                         <th>Estado</th>
                                         <th>Cantidad</th>
 
@@ -49,22 +55,28 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-											<td>{{ $pedido->categoria->nombre }}</td>
-											<td>{{ $pedido->nombre }}</td>
-                                            @if($pedido->estado ==0)
-                                                <td>{{$resultado = 'No disponible';}}</td>
+                                            <td>{{ $pedido->categoria->nombre }}</td>
+                                            <td>{{ $pedido->nombre }}</td>
+                                            @if ($pedido->estado == 0)
+                                                <td>{{ $resultado = 'En espera' }}</td>
                                             @else
-                                                <td>{{$resultado = 'Disponible';}}</td>
+                                                <td>{{ $resultado = 'Trabajando' }}</td>
                                             @endif
                                             <td>{{ $pedido->cantidad }}</td>
 
                                             <td>
-                                                <form action="{{ route('pedidos.destroy',$pedido->id) }}" method="POST">
+                                                <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST">
                                                     <!-- <a class="btn btn-sm btn-primary " href="{ { route('pedidos.show',$pedido->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a> -->
-                                                    <a class="btn btn-sm btn-warning" href="{{ route('pedidos.edit',$pedido->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+
+                                                    <!-- Atributo [href] tiene como valor la ruta del controlador PedidoController referenciando el metodo edit -->
+                                                    <a class="btn btn-sm btn-warning"
+                                                        href="{{ route('pedidos.edit', $pedido->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
+                                                    <!-- Referencia al metodo delete del controlador PedidoController -->
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Quieres eliminar?')"><i
+                                                            class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -16,7 +16,7 @@
     </div>
     <div class="row mt-3">
         <div class="col-md-4">
-            <button type="submit" class="btn btn-primary">{{$modo}} Categoria</button>
+            <button type="submit" class="btn btn-primary">{{ $modo }} Categoria</button>
         </div>
     </div>
 </div>

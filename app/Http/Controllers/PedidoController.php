@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class PedidoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar recursos y dirigir a pagina principal.
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,7 +26,7 @@ class PedidoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Redirigir a formulario para Generar un nuevo pedido.
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,7 +38,7 @@ class PedidoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacenar nuevo pedido generado.
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -50,7 +50,7 @@ class PedidoController extends Controller
         $pedido = Pedido::create($request->all());
 
         return redirect()->route('pedidos.index')
-            ->with('success', 'Pedido created successfully.');
+            ->with('success', 'Pedido creado correctamente.');
     }
 
     /**
@@ -67,7 +67,7 @@ class PedidoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Redirigir a formulario para Editar un pedido.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -81,7 +81,7 @@ class PedidoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Almacenar edicion generada en un pedido.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  Pedido $pedido
@@ -94,10 +94,12 @@ class PedidoController extends Controller
         $pedido->update($request->all());
 
         return redirect()->route('pedidos.index')
-            ->with('success', 'Pedido updated successfully');
+            ->with('success', 'Pedido editado correctamente');
     }
 
     /**
+     * Eliminar un pedido a eleccion.
+     *
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
@@ -107,6 +109,6 @@ class PedidoController extends Controller
         $pedido = Pedido::find($id)->delete();
 
         return redirect()->route('pedidos.index')
-            ->with('success', 'Pedido deleted successfully');
+            ->with('success', 'Pedido eliminado correctamente');
     }
 }

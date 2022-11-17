@@ -16,16 +16,23 @@
                                 {{ __('Categoria') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('categorias.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Categoria') }}
+                            <div class="float-right">
+                                <!-- Atributo [href] tiene como valor la ruta del controlador CategoriaController referenciando el metodo create -->
+
+                                <a href="{{ route('categorias.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
+                                    {{ __('Crear Categoria') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success alert-dismissible" role="alert">
                             <p>{{ $message }}</p>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     @endif
 
@@ -36,7 +43,7 @@
                                     <tr>
                                         <th>#</th>
 
-										<th>Nombre</th>
+                                        <th>Nombre</th>
 
                                         <th>Acciones</th>
                                     </tr>
@@ -46,15 +53,22 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-											<td>{{ $categoria->nombre }}</td>
+                                            <td>{{ $categoria->nombre }}</td>
 
                                             <td>
-                                                <form action="{{ route('categorias.destroy',$categoria->id) }}" method="POST">
+                                                <form action="{{ route('categorias.destroy', $categoria->id) }}"
+                                                    method="POST">
                                                     <!--<a class="btn btn-sm btn-primary " href="{ { route('categorias.show',$categoria->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a> -->
-                                                    <a class="btn btn-sm btn-warning" href="{{ route('categorias.edit',$categoria->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+
+                                                    <!-- Atributo [href] tiene como valor la ruta del controlador CategoriaController referenciando el metodo edit -->
+                                                    <a class="btn btn-sm btn-warning"
+                                                        href="{{ route('categorias.edit', $categoria->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
+                                                    <!-- Referencia al metodo delete del controlador CategoriaController -->
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Quieres eliminar?')"><i
+                                                            class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

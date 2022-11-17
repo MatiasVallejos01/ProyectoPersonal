@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class EmpleadoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar recursos y dirigir a pagina principal.
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,7 +21,7 @@ class EmpleadoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Redirigir a formulario para Generar un nuevo empleado.
      *
      * @return \Illuminate\Http\Response
      */
@@ -32,7 +32,7 @@ class EmpleadoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacenar nuevo empleado generado.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -66,7 +66,7 @@ class EmpleadoController extends Controller
 
         //return response()->json($datosEmpleado);
 
-        return redirect('empleado')->with('mensaje','Empleado agregado con exito');
+        return redirect('empleado')->with('mensaje','Empleado agregado correctamente');
     }
 
     /**
@@ -81,7 +81,7 @@ class EmpleadoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Redirigir a formulario para Editar un empleado.
      *
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
@@ -95,7 +95,7 @@ class EmpleadoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Almacenar edicion generada en un empleado.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Empleado  $empleado
@@ -138,11 +138,11 @@ class EmpleadoController extends Controller
 
         //return view('empleado.edit', compact('empleado'));
 
-        return redirect('empleado')->with('mensaje','Empleado Modificado');
+        return redirect('empleado')->with('mensaje','Empleado modificado correctamente');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar un empleado a eleccion.
      *
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
@@ -158,6 +158,6 @@ class EmpleadoController extends Controller
             Empleado::destroy($id);
         }
 
-        return redirect('empleado')->with('mensaje','Empleado Eliminado');
+        return redirect('empleado')->with('mensaje','Empleado eliminado');
     }
 }

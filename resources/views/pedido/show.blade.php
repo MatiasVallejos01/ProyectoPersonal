@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Categoria Id:</strong>
                             {{ $pedido->categoria_id }}

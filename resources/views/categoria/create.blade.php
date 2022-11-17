@@ -13,13 +13,16 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title"><h3>Generador de Categoria</h3></span>
+                        <span class="card-title">
+                            <h3>Generador de Categoria</h3>
+                        </span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('categorias.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('categorias.store') }}" role="form"
+                            enctype="multipart/form-data">
                             @csrf
 
-                            @include('categoria.form',['modo'=>'Crear'])
+                            @include('categoria.form', ['modo' => 'Crear'])
 
                         </form>
                     </div>

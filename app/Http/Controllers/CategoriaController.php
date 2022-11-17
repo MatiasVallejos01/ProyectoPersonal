@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class CategoriaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar recursos y dirigir a pagina principal.
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,7 +25,7 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * redirigir a formulario para Generar una categoria.
      *
      * @return \Illuminate\Http\Response
      */
@@ -36,7 +36,7 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacenar nueva categoria creada.
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -48,7 +48,7 @@ class CategoriaController extends Controller
         $categoria = Categoria::create($request->all());
 
         return redirect()->route('categorias.index')
-            ->with('success', 'Categoria created successfully.');
+            ->with('success', 'Categoria creado correctamente.');
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Redirigir a formulario para Editar una categoria.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -78,7 +78,7 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Almacenar edicion generada en un pedido.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  Categoria $categoria
@@ -91,10 +91,12 @@ class CategoriaController extends Controller
         $categoria->update($request->all());
 
         return redirect()->route('categorias.index')
-            ->with('success', 'Categoria updated successfully');
+            ->with('success', 'Categoria editado correctamente');
     }
 
     /**
+     * Eliminar una categoria a eleccion.
+     *
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
@@ -104,6 +106,6 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id)->delete();
 
         return redirect()->route('categorias.index')
-            ->with('success', 'Categoria deleted successfully');
+            ->with('success', 'Categoria eliminado correctamente');
     }
 }

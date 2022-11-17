@@ -45,7 +45,7 @@ class Pedido extends Model
      */
     public function categoria()
     {
-        return $this->hasOne('App\Models\Categoria', 'id', 'categoria_id', 'estado', 'cantidad');
+        return $this->hasOne('App\Models\Categoria', 'id', 'categoria_id');
     }
 
 
